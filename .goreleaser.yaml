@@ -1,0 +1,28 @@
+---
+before:
+  hooks:
+    - go mod download
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+    dir: ./cmd/aws-login
+
+archives:
+  - replacements:
+      amd64: x86_64
+
+nfpms:
+  - maintainer: Zoltán Reegn <zoltan.reegn@gmail.com>
+    description: A simple command to get you to the AWS Console from your CLI
+    homepage: https://github.com/reegnz/aws-login
+    license: MIT
+    formats:
+      - deb
+      - rpm
+      - apk
