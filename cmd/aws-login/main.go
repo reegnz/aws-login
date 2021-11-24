@@ -17,5 +17,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	open.Run(u)
+	if err := open.Run(u); err != nil {
+		log.Fatal(err)
+	}
 }
